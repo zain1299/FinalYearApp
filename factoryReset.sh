@@ -1,5 +1,5 @@
 echo **************** cleaning gradlew ******************
-cd android && sudo ./gradlew clean
+cd android && ./gradlew clean
 cd ..
 
 watchman watch-del-all
