@@ -1,10 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  home: {
-    marginTop: 20,
-    // height: "94.2%",
-  },
   container: {
     paddingTop: 50,
     marginLeft: 35,

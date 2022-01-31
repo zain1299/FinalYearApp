@@ -14,7 +14,7 @@ export default StyleSheet.create({
     backgroundColor: "#5359D1",
     textTransform: "uppercase",
     padding: wp(5),
-    marginTop: hp(2),
+    // marginTop: hp(2),
   },
   childContainer: {
     flex: 1,

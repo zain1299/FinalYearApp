@@ -3,7 +3,6 @@ import { SafeAreaView, Text, View, ScrollView } from "react-native";
 import style from "./style";
 
 const Home = ({ navigation }) => {
-  console.log("navigation", navigation);
   return (
     <View style={style.home}>
       <Text style={style.heading}>Home Appliances Maintenance</Text>

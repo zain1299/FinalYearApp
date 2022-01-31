@@ -1,36 +1,10 @@
 import React from "react";
-import { View } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "../pages/home";
 import GeneratorDetails from "../pages/generator/details";
 import MotorDetails from "../pages/motor/details";
 import CustomDrawer from "../Components/Drawer";
-import Motor from "../assets/images/motor.png";
-
-function HomeScreen() {
-  return (
-    <View>
-      <Home />
-    </View>
-  );
-}
-
-function GeneratorDetail() {
-  return (
-    <View>
-      <GeneratorDetails />
-    </View>
-  );
-}
-
-function MotorDetail() {
-  return (
-    <View>
-      <MotorDetails />
-    </View>
-  );
-}
 
 const Drawer = createDrawerNavigator();
 
@@ -52,17 +26,17 @@ const AppView = () => {
           },
         }}
       >
-        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen
           name="GeneratorDetalis"
-          component={GeneratorDetail}
+          component={GeneratorDetails}
           options={{
             drawerLabel: "Generator",
           }}
         />
         <Drawer.Screen
           name="MotorDetails"
-          component={MotorDetail}
+          component={MotorDetails}
           options={{
             drawerLabel: "Motor",
           }}

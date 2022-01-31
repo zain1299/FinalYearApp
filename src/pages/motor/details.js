@@ -1,19 +1,12 @@
 import React from "react";
-import { SafeAreaView, Text, View, ScrollView, Image } from "react-native";
+import { SafeAreaView, Text, View, ScrollView } from "react-native";
 import style from "./style";
 import gas from "../../assets/images/gas.png";
 import fire from "../../assets/images/fire.png";
 import current from "../../assets/images/current.jpg";
+import CustomCard from "../../Components/Card";
 
 const MotorDetails = () => {
-  const card = (title, image) => (
-    <View style={style.imageChild}>
-      <Text style={style.imageText1}>Readings</Text>
-      <Image style={style.images} source={image} />
-      <Text style={style.imageText}>{title}</Text>
-    </View>
-  );
-
   return (
     <ScrollView>
       <Text style={style.heading}>Motor Details</Text>
@@ -30,9 +23,9 @@ const MotorDetails = () => {
         </View>
 
         <View style={style.imageContainer}>
-          {card("Fire", fire)}
-          {card("Gas", gas)}
-          {card("Current ", current)}
+          <CustomCard title="Fire" image={fire} readings={"no"} />
+          <CustomCard title="Gas" image={gas} readings={"Ok"} />
+          <CustomCard title="Current" image={current} readings={"Readings"} />
         </View>
       </SafeAreaView>
     </ScrollView>
