@@ -1,5 +1,6 @@
 import React from "react";
 import { SafeAreaView, Text, View, ScrollView } from "react-native";
+import Graph from "../../Components/Graph";
 import style from "./style";
 
 const Home = ({ navigation }) => {
@@ -9,8 +10,8 @@ const Home = ({ navigation }) => {
       <SafeAreaView style={style.container}>
         <ScrollView>
           <View>
-            <Text style={style.childHeading}>About Our Servies</Text>
-            <Text style={style.text}>
+            <Text style={style.childHeading}>Bezier Line Chart</Text>
+            {/* <Text style={style.text}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -18,7 +19,8 @@ const Home = ({ navigation }) => {
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Text>
+            </Text> */}
+            <Graph />
           </View>
         </ScrollView>
       </SafeAreaView>
