@@ -2,7 +2,7 @@ import React from "react";
 import { Dimensions, Text, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
-const Graph = () => {
+const CustomLineChart = () => {
   return (
     <View>
       <LineChart
@@ -33,6 +33,7 @@ const Graph = () => {
           decimalPlaces: 2, // optional, defaults to 2dp
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+          useShadowColorFromDataset: true,
           style: {
             borderRadius: 16,
           },
@@ -52,4 +53,4 @@ const Graph = () => {
   );
 };
 
-export default Graph;
+export default CustomLineChart;
