@@ -21,7 +21,7 @@ const CustomLineChart = () => {
             },
           ],
         }}
-        width={Dimensions.get("window").width} // from react-native
+        width={Dimensions.get("window").width - 70} // from react-native
         height={220}
         yAxisLabel="$"
         yAxisSuffix="k"
