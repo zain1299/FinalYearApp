@@ -19,7 +19,7 @@ const GeneratorDetails = () => {
   return (
     <ScrollView>
       <Text style={style.heading}>Generator</Text>
-      <SafeAreaView style={style.mainContainer}>
+      <SafeAreaView>
         <View style={style.childContainer}>
           <View>
             <Text style={style.text}>33 °C</Text>

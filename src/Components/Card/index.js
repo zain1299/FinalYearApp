@@ -1,13 +1,15 @@
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import style from "./style";
 
-const CustomCard = ({ title, image, readings }) => {
+const CustomCard = ({ title, image, readings, onPress }) => {
   return (
     <View style={style.imageChild}>
-      <Text style={style.imageText1}>{readings}</Text>
-      <Image style={style.images} source={image} />
-      <Text style={style.imageText}>{title}</Text>
+      <TouchableOpacity onPress={onPress}>
+        {readings && <Text style={style.imageText1}>{readings}</Text>}
+        <Image style={style.images} source={image} />
+        <Text style={style.imageText}>{title}</Text>
+      </TouchableOpacity>
     </View>
   );
 };

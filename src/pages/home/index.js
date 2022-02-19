@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView, Text, View, ScrollView } from "react-native";
-import { LineChart } from "../../Components";
+import { generatorVibrationImage } from "../../assets";
+import { Card } from "../../Components";
 
 import style from "./style";
 
@@ -8,15 +9,26 @@ const Home = ({ navigation }) => {
   return (
     <View style={style.home}>
       <Text style={style.heading}>Home Appliances Maintenance</Text>
-      <SafeAreaView style={style.container}>
-        <ScrollView>
-          <View>
-            <Text style={style.childHeading}>Bezier Line Chart</Text>
-
-            <LineChart />
+      <ScrollView>
+        <SafeAreaView>
+          <View style={style.imageContainer}>
+            <Card
+              title="Generator"
+              image={generatorVibrationImage}
+              onPress={() => {
+                navigation.navigate("GeneratorDetalis");
+              }}
+            />
+            <Card
+              title="Generator"
+              image={generatorVibrationImage}
+              onPress={() => {
+                navigation.navigate("MotorDetails");
+              }}
+            />
           </View>
-        </ScrollView>
-      </SafeAreaView>
+        </SafeAreaView>
+      </ScrollView>
     </View>
   );
 };

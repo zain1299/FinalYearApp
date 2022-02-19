@@ -1,4 +1,8 @@
 import { StyleSheet } from "react-native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "../../utils/responsive";
 
 export default StyleSheet.create({
   container: {
@@ -24,5 +28,13 @@ export default StyleSheet.create({
   },
   childHeading: {
     fontSize: 30,
+  },
+  imageContainer: {
+    display: "flex",
+    flexDirection: "row",
+    // flexWrap: "wrap",
+    marginTop: hp(3),
+    // marginLeft: wp(0.1),
+    marginBottom: hp(3),
   },
 });
