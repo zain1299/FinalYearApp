@@ -1,9 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import Home from "../pages/home";
-import GeneratorDetails from "../pages/generator/details";
-import MotorDetails from "../pages/motor/details";
+import { Home, GeneratorDetails, MotorDetails } from "../pages";
 import CustomDrawer from "../Components/Drawer";
 
 const Drawer = createDrawerNavigator();

@@ -1,7 +1,6 @@
 import React from "react";
 import { SafeAreaView, Text, View, ScrollView } from "react-native";
-import CustomBarChart from "../../Components/Graph/BarChart";
-import CustomLineChart from "../../Components/Graph/LineChart";
+import { LineChart } from "../../Components";
 
 import style from "./style";
 
@@ -14,14 +13,8 @@ const Home = ({ navigation }) => {
           <View>
             <Text style={style.childHeading}>Bezier Line Chart</Text>
 
-            <CustomLineChart />
+            <LineChart />
           </View>
-
-          {/* <View>
-            <Text style={style.childHeading}>Bar Chart</Text>
-
-            <CustomBarChart />
-          </View> */}
         </ScrollView>
       </SafeAreaView>
     </View>

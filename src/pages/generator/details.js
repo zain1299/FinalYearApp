@@ -1,17 +1,16 @@
 import React from "react";
 import { SafeAreaView, Text, View, ScrollView } from "react-native";
-
 // import components
-import CustomCard from "../../Components/Card";
-
+import { Card } from "../../Components";
 //  import style
 import style from "./style";
-
 // import pictures
-import fire from "../../assets/images/fire.png";
-import generatorVibration from "../../assets/images/generatorVibration.png";
-import temperature from "../../assets/images/temperature.png";
-import gas from "../../assets/images/gas.png";
+import {
+  fireImage,
+  generatorVibrationImage,
+  temperatureImage,
+  gasImage,
+} from "../../assets";
 
 const GeneratorDetails = () => {
   const randomValues = Math.floor(Math.random() * 4 + 62);
@@ -33,18 +32,18 @@ const GeneratorDetails = () => {
         </View>
 
         <View style={style.imageContainer}>
-          <CustomCard title="Fire" image={fire} readings={"no"} />
-          <CustomCard
+          <Card title="Fire" image={fireImage} readings={"no"} />
+          <Card
             title="Vibration"
-            image={generatorVibration}
+            image={generatorVibrationImage}
             readings={`${randomValues} %`}
           />
-          <CustomCard
+          <Card
             title="Temp"
-            image={temperature}
+            image={temperatureImage}
             readings={`${generatorRandomValues} °C`}
           />
-          <CustomCard title="Gas" image={gas} readings={"Normal"} />
+          <Card title="Gas" image={gasImage} readings={"Normal"} />
         </View>
       </SafeAreaView>
     </ScrollView>
