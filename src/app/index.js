@@ -1,7 +1,13 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { Home, GeneratorDetails, MotorDetails } from "../pages";
+import {
+  Home,
+  GeneratorDetails,
+  MotorDetails,
+  SignInScreen,
+  Signup,
+} from "../pages";
 import CustomDrawer from "../Components/Drawer";
 
 const Drawer = createDrawerNavigator();
@@ -10,7 +16,7 @@ const AppView = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Home"
+        // initialRouteName="Home"
         drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={{
           headerShown: false,
@@ -24,6 +30,8 @@ const AppView = () => {
           },
         }}
       >
+        <Drawer.Screen name="Login" component={SignInScreen} />
+        <Drawer.Screen name="Signup" component={Signup} />
         <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen
           name="GeneratorDetalis"
