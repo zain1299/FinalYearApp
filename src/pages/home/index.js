@@ -20,7 +20,7 @@ const Home = ({ navigation }) => {
               }}
             />
             <Card
-              title="Generator"
+              title="Motor"
               image={generatorVibrationImage}
               onPress={() => {
                 navigation.navigate("MotorDetails");

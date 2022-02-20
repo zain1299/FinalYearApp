@@ -9,14 +9,22 @@ import {
   Signup,
 } from "../pages";
 import CustomDrawer from "../Components/Drawer";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Drawer = createDrawerNavigator();
+
+const Stack = createNativeStackNavigator();
 
 const AppView = () => {
   return (
     <NavigationContainer>
+      {/* <Stack.Navigator>
+        <Stack.Screen name="Login" component={SignInScreen} />
+        <Stack.Screen name="Signup" component={Signup} />
+      </Stack.Navigator> */}
+
       <Drawer.Navigator
-        // initialRouteName="Home"
+        initialRouteName="Home"
         drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={{
           headerShown: false,
@@ -30,8 +38,6 @@ const AppView = () => {
           },
         }}
       >
-        <Drawer.Screen name="Login" component={SignInScreen} />
-        <Drawer.Screen name="Signup" component={Signup} />
         <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen
           name="GeneratorDetalis"
