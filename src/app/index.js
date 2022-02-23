@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import auth from "@react-native-firebase/auth";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   Home,
@@ -16,44 +17,63 @@ const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 const AppView = () => {
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
+
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator>
-        <Stack.Screen name="Login" component={SignInScreen} />
-        <Stack.Screen name="Signup" component={Signup} />
-      </Stack.Navigator> */}
-
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerContent={(props) => <CustomDrawer {...props} />}
-        screenOptions={{
-          headerShown: false,
-          drawerActiveBackgroundColor: "#aa18ea",
-          drawerActiveTintColor: "#fff",
-          drawerInactiveTintColor: "#333",
-          drawerLabelStyle: {
-            // marginLeft: -25,
-            fontFamily: "Roboto-Medium",
-            fontSize: 15,
-          },
-        }}
-      >
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen
-          name="GeneratorDetalis"
-          component={GeneratorDetails}
-          options={{
-            drawerLabel: "Generator",
+      {user ? (
+        <Drawer.Navigator
+          initialRouteName="Home"
+          drawerContent={(props) => <CustomDrawer {...props} />}
+          screenOptions={{
+            headerShown: false,
+            drawerActiveBackgroundColor: "#aa18ea",
+            drawerActiveTintColor: "#fff",
+            drawerInactiveTintColor: "#333",
+            drawerLabelStyle: {
+              // marginLeft: -25,
+              fontFamily: "Roboto-Medium",
+              fontSize: 15,
+            },
           }}
-        />
-        <Drawer.Screen
-          name="MotorDetails"
-          component={MotorDetails}
-          options={{
-            drawerLabel: "Motor",
-          }}
-        />
-      </Drawer.Navigator>
+        >
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen
+            name="GeneratorDetalis"
+            component={GeneratorDetails}
+            options={{
+              drawerLabel: "Generator",
+            }}
+          />
+          <Drawer.Screen
+            name="MotorDetails"
+            component={MotorDetails}
+            options={{
+              drawerLabel: "Motor",
+            }}
+          />
+        </Drawer.Navigator>
+      ) : (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={SignInScreen} />
+          <Stack.Screen name="Signup" component={Signup} />
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 };

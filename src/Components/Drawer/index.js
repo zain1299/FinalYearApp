@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import auth from "@react-native-firebase/auth";
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -13,7 +14,13 @@ import {
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const CustomDrawer = (props) => {
+const CustomDrawer = (props, { navigation }) => {
+  const signout = () => {
+    auth()
+      .signOut()
+      .then(() => navigation.navigate("Login"));
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView
@@ -49,7 +56,10 @@ const CustomDrawer = (props) => {
         </View>
       </DrawerContentScrollView>
       <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}>
-        <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
+        <TouchableOpacity
+          onPress={() => signout()}
+          style={{ paddingVertical: 15 }}
+        >
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Ionicons name="exit-outline" size={22} />
             <Text

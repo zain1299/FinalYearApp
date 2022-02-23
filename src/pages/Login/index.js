@@ -17,12 +17,11 @@ import { useTheme } from "react-native-paper";
 //  import style
 import styles from "./style";
 
-// import Users from '../model/users';
-import users from "../../model/users";
+import auth from "@react-native-firebase/auth";
 
 const SignInScreen = ({ navigation }) => {
   const [data, setData] = React.useState({
-    username: "",
+    email: "",
     password: "",
     check_textInputChange: false,
     secureTextEntry: true,
@@ -32,22 +31,18 @@ const SignInScreen = ({ navigation }) => {
 
   const { colors } = useTheme();
 
-  const AuthContext = React.createContext();
-
-  const signIn = React.useContext(AuthContext);
-
   const textInputChange = (val) => {
-    if (val.trim().length >= 4) {
+    if (val) {
       setData({
         ...data,
-        username: val,
+        email: val,
         check_textInputChange: true,
         isValidUser: true,
       });
     } else {
       setData({
         ...data,
-        username: val,
+        email: val,
         check_textInputChange: false,
         isValidUser: false,
       });
@@ -91,29 +86,28 @@ const SignInScreen = ({ navigation }) => {
     }
   };
 
-  const loginHandle = (userName, password) => {
-    const foundUser = users.filter((item) => {
-      return userName == item.username && password == item.password;
-    });
-
-    if (data.username.length == 0 || data.password.length == 0) {
-      Alert.alert(
-        "Wrong Input!",
-        "Username or password field cannot be empty.",
-        [{ text: "Okay" }]
-      );
-      return;
-    }
-
-    if (foundUser.length == 0) {
-      Alert.alert("Invalid User!", "Username or password is incorrect.", [
+  const loginHandle = () => {
+    if (data.email?.length == 0 || data.password?.length == 0) {
+      Alert.alert("Wrong Input!", "email or password field cannot be empty.", [
         { text: "Okay" },
       ]);
       return;
     } else {
-      navigation.navigate("Home");
+      auth()
+        ?.signInWithEmailAndPassword(data.email, data.password)
+        ?.then(() => {
+          navigation.navigate("Home");
+        })
+        .catch((error) => {
+          if (error.code === "auth/invalid-email") {
+            Alert.alert(
+              "Wrong Input!",
+              "That email address or password is invalid!.",
+              [{ text: "Okay" }]
+            );
+          }
+        });
     }
-    // signIn(foundUser);
   };
 
   return (
@@ -139,12 +133,12 @@ const SignInScreen = ({ navigation }) => {
             },
           ]}
         >
-          Username
+          Email
         </Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="Your Username"
+            placeholder="Your email"
             placeholderTextColor="#666666"
             style={[
               styles.textInput,
@@ -162,13 +156,13 @@ const SignInScreen = ({ navigation }) => {
             </Animatable.View>
           ) : null}
         </View>
-        {data.isValidUser ? null : (
+        {/* {data.isValidUser ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
-              Username must be 4 characters long.
+              email must be 4 characters long.
             </Text>
           </Animatable.View>
-        )}
+        )} */}
 
         <Text
           style={[
@@ -204,19 +198,19 @@ const SignInScreen = ({ navigation }) => {
             )}
           </TouchableOpacity>
         </View>
-        {data.isValidPassword ? null : (
+        {/* {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>
               Password must be 8 characters long.
             </Text>
           </Animatable.View>
-        )}
+        )} */}
 
         <View style={styles.button}>
           <TouchableOpacity
             style={styles.signIn}
             onPress={() => {
-              loginHandle(data.username, data.password);
+              loginHandle();
             }}
           >
             <LinearGradient

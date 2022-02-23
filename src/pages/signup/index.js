@@ -7,6 +7,7 @@ import {
   ScrollView,
   StatusBar,
 } from "react-native";
+import auth from "@react-native-firebase/auth";
 import * as Animatable from "react-native-animatable";
 import LinearGradient from "react-native-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -69,6 +70,25 @@ const Signup = ({ navigation }) => {
     });
   };
 
+  const signup = () => {
+    auth()
+      .createUserWithEmailAndPassword(data.username, data.password)
+      .then(() => {
+        console.log("User account created & signed in!");
+      })
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          console.log("That email address is already in use!");
+        }
+
+        if (error.code === "auth/invalid-email") {
+          console.log("That email address is invalid!");
+        }
+
+        console.error(error);
+      });
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#009387" barStyle="light-content" />
@@ -77,11 +97,11 @@ const Signup = ({ navigation }) => {
       </View>
       <Animatable.View animation="fadeInUpBig" style={styles.footer}>
         <ScrollView>
-          <Text style={styles.text_footer}>Username</Text>
+          <Text style={styles.text_footer}>Email</Text>
           <View style={styles.action}>
             <FontAwesome name="user-o" color="#05375a" size={20} />
             <TextInput
-              placeholder="Your Username"
+              placeholder="Email"
               style={styles.textInput}
               autoCapitalize="none"
               onChangeText={(val) => textInputChange(val)}
@@ -161,7 +181,7 @@ const Signup = ({ navigation }) => {
             </Text>
           </View>
           <View style={styles.button}>
-            <TouchableOpacity style={styles.signIn} onPress={() => {}}>
+            <TouchableOpacity style={styles.signIn} onPress={() => signup()}>
               <LinearGradient
                 colors={["#08d4c4", "#01ab9d"]}
                 style={styles.signIn}
