@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,12 +6,15 @@ import {
   TextInput,
   ScrollView,
   StatusBar,
+  Alert,
 } from "react-native";
+import { loginAction } from "../../redux/action";
 import auth from "@react-native-firebase/auth";
 import * as Animatable from "react-native-animatable";
 import LinearGradient from "react-native-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
+import { useDispatch } from "react-redux";
 
 //  import style
 import styles from "./style";
@@ -25,6 +28,8 @@ const Signup = ({ navigation }) => {
     secureTextEntry: true,
     confirm_secureTextEntry: true,
   });
+
+  const [fullName, setFullName] = useState("");
 
   const textInputChange = (val) => {
     if (val.length !== 0) {
@@ -70,23 +75,41 @@ const Signup = ({ navigation }) => {
     });
   };
 
+  const dispatch = useDispatch();
+
   const signup = () => {
-    auth()
-      .createUserWithEmailAndPassword(data.username, data.password)
-      .then(() => {
-        console.log("User account created & signed in!");
-      })
-      .catch((error) => {
-        if (error.code === "auth/email-already-in-use") {
-          console.log("That email address is already in use!");
-        }
+    if (
+      fullName?.length == 0 ||
+      data.username?.length == 0 ||
+      data.password?.length == 0 ||
+      data.confirm_password?.length == 0
+    ) {
+      Alert.alert("Wrong Input!", "All field must be filled", [
+        { text: "Okay" },
+      ]);
+      return;
+    } else {
+      auth()
+        .createUserWithEmailAndPassword(data.username, data.password)
+        .then((result) => {
+          result.user.updateProfile({
+            displayName: fullName,
+          });
+          dispatch(loginAction(result));
+          navigation.navigate("Home");
+        })
+        .catch((error) => {
+          if (error.code === "auth/email-already-in-use") {
+            console.log("That email address is already in use!");
+          }
 
-        if (error.code === "auth/invalid-email") {
-          console.log("That email address is invalid!");
-        }
+          if (error.code === "auth/invalid-email") {
+            console.log("That email address is invalid!");
+          }
 
-        console.error(error);
-      });
+          console.error(error);
+        });
+    }
   };
 
   return (
@@ -97,6 +120,17 @@ const Signup = ({ navigation }) => {
       </View>
       <Animatable.View animation="fadeInUpBig" style={styles.footer}>
         <ScrollView>
+          <Text style={styles.text_footer}>Full Name</Text>
+          <View style={styles.action}>
+            <FontAwesome name="user-o" color="#05375a" size={20} />
+            <TextInput
+              placeholder="Full Name"
+              style={styles.textInput}
+              autoCapitalize="none"
+              onChangeText={(e) => setFullName(e)}
+            />
+          </View>
+
           <Text style={styles.text_footer}>Email</Text>
           <View style={styles.action}>
             <FontAwesome name="user-o" color="#05375a" size={20} />

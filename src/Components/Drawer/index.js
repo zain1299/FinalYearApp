@@ -13,8 +13,11 @@ import {
 } from "@react-navigation/drawer";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { useSelector } from "react-redux";
 
 const CustomDrawer = (props, { navigation }) => {
+  const data = useSelector((state) => state.user);
+
   const signout = () => {
     auth()
       .signOut()
@@ -48,7 +51,7 @@ const CustomDrawer = (props, { navigation }) => {
               marginBottom: 5,
             }}
           >
-            Zain
+            {data.name}
           </Text>
         </ImageBackground>
         <View style={{ flex: 1, backgroundColor: "#fff", paddingTop: 10 }}>

@@ -13,11 +13,13 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 
 import { useTheme } from "react-native-paper";
+import { useDispatch } from "react-redux";
 
 //  import style
 import styles from "./style";
 
 import auth from "@react-native-firebase/auth";
+import { loginAction } from "../../redux/action";
 
 const SignInScreen = ({ navigation }) => {
   const [data, setData] = React.useState({
@@ -30,6 +32,8 @@ const SignInScreen = ({ navigation }) => {
   });
 
   const { colors } = useTheme();
+
+  const dispatch = useDispatch();
 
   const textInputChange = (val) => {
     if (val) {
@@ -95,7 +99,9 @@ const SignInScreen = ({ navigation }) => {
     } else {
       auth()
         ?.signInWithEmailAndPassword(data.email, data.password)
-        ?.then(() => {
+        ?.then((res) => {
+          console.log("ressssss", res);
+          dispatch(loginAction(res));
           navigation.navigate("Home");
         })
         .catch((error) => {
