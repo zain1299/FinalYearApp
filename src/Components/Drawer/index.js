@@ -11,17 +11,23 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
-
+import { useDispatch } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useSelector } from "react-redux";
+import { logout } from "../../redux/action";
 
 const CustomDrawer = (props, { navigation }) => {
   const data = useSelector((state) => state.user);
 
+  const dispatch = useDispatch();
+
   const signout = () => {
     auth()
       .signOut()
-      .then(() => navigation.navigate("Login"));
+      .then(() => {
+        dispatch(logout());
+        // navigation.navigate("Login");
+      });
   };
 
   return (

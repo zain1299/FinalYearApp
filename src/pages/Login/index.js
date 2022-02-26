@@ -15,7 +15,6 @@ import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "react-native-paper";
 import { useDispatch } from "react-redux";
 
-//  import style
 import styles from "./style";
 
 import auth from "@react-native-firebase/auth";
@@ -100,7 +99,6 @@ const SignInScreen = ({ navigation }) => {
       auth()
         ?.signInWithEmailAndPassword(data.email, data.password)
         ?.then((res) => {
-          console.log("ressssss", res);
           dispatch(loginAction(res));
           navigation.navigate("Home");
         })
@@ -162,13 +160,6 @@ const SignInScreen = ({ navigation }) => {
             </Animatable.View>
           ) : null}
         </View>
-        {/* {data.isValidUser ? null : (
-          <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>
-              email must be 4 characters long.
-            </Text>
-          </Animatable.View>
-        )} */}
 
         <Text
           style={[
@@ -204,13 +195,6 @@ const SignInScreen = ({ navigation }) => {
             )}
           </TouchableOpacity>
         </View>
-        {/* {data.isValidPassword ? null : (
-          <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>
-              Password must be 8 characters long.
-            </Text>
-          </Animatable.View>
-        )} */}
 
         <View style={styles.button}>
           <TouchableOpacity

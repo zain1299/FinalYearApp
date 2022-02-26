@@ -1,10 +1,7 @@
 import React from "react";
 import { SafeAreaView, Text, View, ScrollView } from "react-native";
-// import components
 import { Card } from "../../Components";
-//  import style
 import style from "./style";
-// import pictures
 import {
   fireImage,
   generatorVibrationImage,
@@ -12,7 +9,7 @@ import {
   gasImage,
 } from "../../assets";
 
-const GeneratorDetails = () => {
+const GeneratorDetails = ({ navigation }) => {
   const randomValues = Math.floor(Math.random() * 4 + 62);
   const generatorRandomValues = Math.floor(Math.random() * 4 + 102);
 
@@ -37,6 +34,9 @@ const GeneratorDetails = () => {
             title="Vibration"
             image={generatorVibrationImage}
             readings={`${randomValues} %`}
+            onPress={() => {
+              navigation.navigate("GraphDetails");
+            }}
           />
           <Card
             title="Temp"

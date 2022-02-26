@@ -8,6 +8,7 @@ import {
   MotorDetails,
   SignInScreen,
   Signup,
+  GraphDetails,
 } from "../pages";
 import CustomDrawer from "../Components/Drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -53,6 +54,7 @@ const AppView = () => {
           }}
         >
           <Drawer.Screen name="Home" component={Home} />
+
           <Drawer.Screen
             name="GeneratorDetalis"
             component={GeneratorDetails}
@@ -65,6 +67,17 @@ const AppView = () => {
             component={MotorDetails}
             options={{
               drawerLabel: "Motor",
+            }}
+          />
+
+          <Drawer.Screen
+            name="GraphDetails"
+            component={GraphDetails}
+            options={{
+              drawerLabel: () => null,
+              title: null,
+              drawerIcon: () => null,
+              drawerActiveBackgroundColor: null,
             }}
           />
         </Drawer.Navigator>

@@ -32,7 +32,7 @@ export default StyleSheet.create({
   imageContainer: {
     display: "flex",
     flexDirection: "row",
-    // flexWrap: "wrap",
+    flexWrap: "wrap",
     marginTop: hp(3),
     // marginLeft: wp(0.1),
     marginBottom: hp(3),

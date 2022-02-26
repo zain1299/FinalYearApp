@@ -17,11 +17,17 @@ const CustomLineChart = () => {
                 Math.random() * 100,
                 Math.random() * 100,
                 Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
               ],
             },
           ],
         }}
-        width={Dimensions.get("window").width - 70} // from react-native
+        width={Dimensions.get("window").width - 60} // from react-native
         height={220}
         yAxisLabel="$"
         yAxisSuffix="k"
@@ -45,8 +51,9 @@ const CustomLineChart = () => {
         }}
         bezier
         style={{
-          marginVertical: 8,
+          marginVertical: 20,
           borderRadius: 16,
+          marginHorizontal: 25,
         }}
       />
     </View>

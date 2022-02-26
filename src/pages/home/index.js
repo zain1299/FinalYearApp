@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView, Text, View, ScrollView } from "react-native";
 import { generatorVibrationImage } from "../../assets";
-import { Card } from "../../Components";
+import { Card, Cards } from "../../Components";
 
 import style from "./style";
 
@@ -12,16 +12,19 @@ const Home = ({ navigation }) => {
       <ScrollView>
         <SafeAreaView>
           <View style={style.imageContainer}>
-            <Card
+            <Cards
               title="Generator"
               image={generatorVibrationImage}
+              isActive={"active"}
               onPress={() => {
                 navigation.navigate("GeneratorDetalis");
               }}
             />
-            <Card
+
+            <Cards
               title="Motor"
               image={generatorVibrationImage}
+              isActive={"active"}
               onPress={() => {
                 navigation.navigate("MotorDetails");
               }}
