@@ -1,28 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Dimensions, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
+import { useSelector } from "react-redux";
+import database from "@react-native-firebase/database";
 
-const CustomLineChart = () => {
-  var storePreviousData = Math.floor(Math.random() * 100 + 1);
-  var storePreviousData1 = Math.floor(Math.random() * 100 + 1);
-  var storePreviousData2 = Math.floor(Math.random() * 100 + 1);
-  var storePreviousData3 = Math.floor(Math.random() * 100 + 1);
-  var storePreviousData4 = Math.floor(Math.random() * 100 + 1);
+const CustomLineChart = ({ data }) => {
+  const user = useSelector((state) => state.user);
+
+  const [state, setState] = useState([222]);
+
+  // useEffect(async () => {
+  //   const onValueChange = database()
+  //     .ref(`/UsersData/${user.id}`)
+  //     .on("value", (snapshot) => {
+  //       let data = [...state];
+  //       if (state.length < 15) {
+  //         data.push(snapshot.val().test.Voltage);
+  //         setState(data);
+  //       } else {
+  //         data?.shift();
+  //         setState(data);
+  //       }
+  //     });
+
+  //   // Stop listening for updates when no longer required
+  //   return () =>
+  //     database().ref(`/UsersData/${user.id}`).off("value", onValueChange);
+  // }, [user.id]);
+
+  // console.log("state", state.length);
 
   return (
     <View>
       <LineChart
         data={{
-          labels: ["January", "February", "March", "April", "May", "June"],
+          // labels: ["January", "February", "March", "April", "May", "June"],
           datasets: [
             {
-              data: [
-                storePreviousData,
-                storePreviousData1,
-                storePreviousData2,
-                storePreviousData3,
-                storePreviousData4,
-              ],
+              data: state,
             },
           ],
         }}

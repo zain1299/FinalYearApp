@@ -27,7 +27,7 @@ const GraphDetails = ({ route, navigation }) => {
 
       <SafeAreaView>
         <View>
-          <LineChart />
+          <LineChart data={route.params?.name} />
         </View>
       </SafeAreaView>
     </ScrollView>

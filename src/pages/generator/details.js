@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   Text,
@@ -17,10 +17,35 @@ import {
   backImage,
   currentImage,
 } from "../../assets";
+import { useSelector } from "react-redux";
+import database from "@react-native-firebase/database";
 
 const GeneratorDetails = ({ navigation }) => {
   const randomValues = Math.floor(Math.random() * 4 + 62);
   const generatorRandomValues = Math.floor(Math.random() * 4 + 102);
+
+  const user = useSelector((state) => state.user);
+
+  const [state, setState] = useState();
+
+  // useEffect(async () => {
+  //   const onValueChange = database()
+  //     .ref(`/UsersData/${user.id}`)
+  //     .on("value", (snapshot) => {
+  //       // let arr = [];
+
+  //       // if (arr?.length < 10) {
+  //       //   const data = snapshot.val().test.Voltage;
+
+  //       //   arr.push(snapshot.val().test.Voltage);
+  //       // }
+  //       setState(snapshot.val().test.Voltage);
+  //     });
+
+  //   // Stop listening for updates when no longer requiredSS
+  //   return () =>
+  //     database().ref(`/UsersData/${user.id}`).off("value", onValueChange);
+  // }, [user.id]);
 
   return (
     <ScrollView>

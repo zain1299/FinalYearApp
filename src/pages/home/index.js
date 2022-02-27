@@ -16,20 +16,6 @@ import style from "./style";
 import { useSelector } from "react-redux";
 
 const Home = ({ navigation }) => {
-  const user = useSelector((state) => state.user);
-
-  // useEffect(() => {
-  //   const onValueChange = database()
-  //     .ref(`/UsersData/${user.id}`)
-  //     .on("value", (snapshot) => {
-  //       console.log("User data: ", snapshot.val());
-  //     });
-
-  //   // Stop listening for updates when no longer required
-  //   return () =>
-  //     database().ref(`/UsersData/${user.id}`).off("value", onValueChange);
-  // }, [user.id]);
-
   return (
     <View style={style.home}>
       <View style={style.menuContainer}>
