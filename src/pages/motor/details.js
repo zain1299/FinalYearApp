@@ -14,7 +14,7 @@ import style from "./style";
 // import pictures
 import { fireImage, gasImage, currentImage, backImage } from "../../assets";
 
-const MotorDetails = () => {
+const MotorDetails = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={style.menuContainer}>
