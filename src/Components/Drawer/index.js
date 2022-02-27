@@ -11,6 +11,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import { userImage } from "../../assets";
 import { useDispatch } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useSelector } from "react-redux";
@@ -26,6 +27,10 @@ const CustomDrawer = (props, { navigation }) => {
       .signOut()
       .then(() => {
         dispatch(logout());
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "Login" }],
+        });
         // navigation.navigate("Login");
       });
   };
@@ -41,7 +46,7 @@ const CustomDrawer = (props, { navigation }) => {
           style={{ padding: 20 }}
         >
           <Image
-            // source={require("../assets/images/user-profile.jpg")}
+            source={userImage}
             style={{
               height: 80,
               width: 80,

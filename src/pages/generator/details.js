@@ -49,7 +49,6 @@ const GeneratorDetails = ({ navigation }) => {
           <Card
             title="Vibration"
             image={generatorVibrationImage}
-            // readings=""
             onPress={() => {
               navigation.navigate("GraphDetails", {
                 name: "Vibration",

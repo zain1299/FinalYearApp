@@ -13,9 +13,7 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         id: action.payload.data.user.uid,
-        name: action.payload.data.user.displayName
-          ? action.payload.data.user.displayName
-          : "Zain Ul Abideen",
+        name: action.payload.data.user.displayName,
         email: action.payload.data.user.email,
         authenticated: true,
       };

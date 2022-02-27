@@ -100,6 +100,7 @@ const SignInScreen = ({ navigation }) => {
         ?.signInWithEmailAndPassword(data.email, data.password)
         ?.then((res) => {
           dispatch(loginAction(res));
+          console.log("resfdf", res);
           navigation.navigate("Home");
         })
         .catch((error) => {

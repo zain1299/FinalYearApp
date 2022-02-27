@@ -44,8 +44,8 @@ export default StyleSheet.create({
   },
   menu: {
     width: wp(6),
-    height: hp(5),
-    marginLeft: wp(2.5),
-    marginTop: wp(7),
+    height: hp(5.5),
+    marginLeft: wp(3),
+    marginTop: wp(6),
   },
 });

@@ -7,6 +7,8 @@ import currentImage from "./images/current.jpg";
 import generatorImage from "./images/generator.jpeg";
 import menuImage from "./images/menu.png";
 import backImage from "./images/back.png";
+import homeImage from "./images/home.png";
+import userImage from "./images/user.png";
 
 export {
   fireImage,
@@ -17,4 +19,6 @@ export {
   currentImage,
   menuImage,
   backImage,
+  homeImage,
+  userImage,
 };

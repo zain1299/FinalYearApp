@@ -22,7 +22,7 @@ const GraphDetails = ({ route, navigation }) => {
         >
           <Image style={style.menu} source={backImage} />
         </TouchableOpacity>
-        <Text style={style.heading}>{route.params.name}</Text>
+        <Text style={style.heading}>{route.params?.name}</Text>
       </View>
 
       <SafeAreaView>

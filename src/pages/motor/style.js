@@ -33,7 +33,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     marginTop: hp(3),
-    marginLeft: wp(2),
+    // marginLeft: wp(2),
     marginBottom: hp(3),
   },
   images: {

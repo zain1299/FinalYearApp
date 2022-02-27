@@ -33,9 +33,9 @@ const CustomLineChart = () => {
         yAxisSuffix="k"
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
-          backgroundColor: "#e26a00",
-          backgroundGradientFrom: "#fb8c00",
-          backgroundGradientTo: "#ffa726",
+          // backgroundColor: "#e26a00",
+          backgroundGradientFrom: "#5359D1",
+          backgroundGradientTo: "#5359D1",
           decimalPlaces: 2, // optional, defaults to 2dp
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -46,7 +46,7 @@ const CustomLineChart = () => {
           propsForDots: {
             r: "6",
             strokeWidth: "2",
-            stroke: "#ffa726",
+            stroke: "#fff",
           },
         }}
         bezier
