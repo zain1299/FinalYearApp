@@ -1,5 +1,12 @@
 import React from "react";
-import { SafeAreaView, Text, View, ScrollView } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import { Card } from "../../Components";
 import style from "./style";
 import {
@@ -7,6 +14,7 @@ import {
   generatorVibrationImage,
   temperatureImage,
   gasImage,
+  backImage,
 } from "../../assets";
 
 const GeneratorDetails = ({ navigation }) => {
@@ -15,7 +23,16 @@ const GeneratorDetails = ({ navigation }) => {
 
   return (
     <ScrollView>
-      <Text style={style.heading}>Generator</Text>
+      <View style={style.menuContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
+          <Image style={style.menu} source={backImage} />
+        </TouchableOpacity>
+        <Text style={style.heading}>Generator</Text>
+      </View>
       <SafeAreaView>
         <View style={style.childContainer}>
           <View>
@@ -29,13 +46,14 @@ const GeneratorDetails = ({ navigation }) => {
         </View>
 
         <View style={style.imageContainer}>
-          <Card title="Fire" image={fireImage} readings={"no"} />
           <Card
             title="Vibration"
             image={generatorVibrationImage}
-            readings={`${randomValues} %`}
+            // readings=""
             onPress={() => {
-              navigation.navigate("GraphDetails");
+              navigation.navigate("GraphDetails", {
+                name: "Vibration",
+              });
             }}
           />
           <Card
@@ -44,6 +62,7 @@ const GeneratorDetails = ({ navigation }) => {
             readings={`${generatorRandomValues} °C`}
           />
           <Card title="Gas" image={gasImage} readings={"Normal"} />
+          <Card title="Fire" image={fireImage} readings={"no"} />
         </View>
       </SafeAreaView>
     </ScrollView>

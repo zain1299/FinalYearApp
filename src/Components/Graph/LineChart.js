@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, Text, View } from "react-native";
+import { Dimensions, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 const CustomLineChart = () => {
@@ -27,7 +27,7 @@ const CustomLineChart = () => {
             },
           ],
         }}
-        width={Dimensions.get("window").width - 60} // from react-native
+        width={Dimensions.get("window").width - 60}
         height={220}
         yAxisLabel="$"
         yAxisSuffix="k"
@@ -51,8 +51,8 @@ const CustomLineChart = () => {
         }}
         bezier
         style={{
-          marginVertical: 20,
-          borderRadius: 16,
+          marginVertical: 30,
+          borderRadius: 13,
           marginHorizontal: 25,
         }}
       />

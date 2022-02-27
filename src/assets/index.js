@@ -6,6 +6,7 @@ import gasImage from "./images/gas.png";
 import currentImage from "./images/current.jpg";
 import generatorImage from "./images/generator.jpeg";
 import menuImage from "./images/menu.png";
+import backImage from "./images/back.png";
 
 export {
   fireImage,
@@ -15,4 +16,5 @@ export {
   gasImage,
   currentImage,
   menuImage,
+  backImage,
 };

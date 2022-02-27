@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "247419988132",
-    "project_id": "final-year-project-428d0",
-    "storage_bucket": "final-year-project-428d0.appspot.com"
+    "project_number": "562429457323",
+    "firebase_url": "https://user-id-reading-default-rtdb.firebaseio.com",
+    "project_id": "user-id-reading",
+    "storage_bucket": "user-id-reading.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:247419988132:android:4d12cf0662ccf89c1c5e31",
+        "mobilesdk_app_id": "1:562429457323:android:ff052f74ce03e7fb9018ee",
         "android_client_info": {
           "package_name": "com.fypapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "247419988132-si57pqqhkkrcsnu699c46b9apu1c3fs7.apps.googleusercontent.com",
+          "client_id": "562429457323-mh4s7ko5sd3219vc9ojpkusnp07076cm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB9Ovo9nNJRI3lmUrPICAuwLphv3rTflYs"
+          "current_key": "AIzaSyAZfGOUA5OIU9rfiQ3z0RRRSmYm2d4eRHo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "247419988132-si57pqqhkkrcsnu699c46b9apu1c3fs7.apps.googleusercontent.com",
+              "client_id": "562429457323-mh4s7ko5sd3219vc9ojpkusnp07076cm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

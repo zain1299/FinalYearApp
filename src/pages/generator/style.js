@@ -10,10 +10,11 @@ export default StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
-    width: wp("100%"),
-    backgroundColor: "#5359D1",
+    // width: wp("100%"),
+    // backgroundColor: "#5359D1",
     textTransform: "uppercase",
     padding: wp(5),
+    paddingHorizontal: wp(25),
     // marginTop: hp(1),
   },
   childContainer: {
@@ -60,5 +61,17 @@ export default StyleSheet.create({
     marginTop: wp(6),
     marginHorizontal: hp(3.5),
     minWidth: wp(35),
+  },
+  menuContainer: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    backgroundColor: "#5359D1",
+  },
+  menu: {
+    width: wp(6),
+    height: hp(5),
+    marginLeft: wp(2.5),
+    marginTop: wp(4),
   },
 });

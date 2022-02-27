@@ -10,14 +10,13 @@ export default StyleSheet.create({
     marginLeft: 35,
   },
   heading: {
-    fontSize: 23,
+    fontSize: wp(6),
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
-    width: "100%",
-    backgroundColor: "#5359D1",
     textTransform: "uppercase",
-    padding: 20,
+    padding: wp(4),
+    paddingHorizontal: wp(15),
   },
 
   text: {
@@ -36,5 +35,17 @@ export default StyleSheet.create({
     marginTop: hp(3),
     // marginLeft: wp(0.1),
     marginBottom: hp(3),
+  },
+  menuContainer: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    backgroundColor: "#5359D1",
+  },
+  menu: {
+    width: wp(6),
+    height: hp(5),
+    marginLeft: wp(2.5),
+    marginTop: wp(7),
   },
 });

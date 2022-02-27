@@ -18,7 +18,6 @@ const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 const AppView = () => {
-  // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
@@ -30,7 +29,7 @@ const AppView = () => {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
+    return subscriber;
   }, []);
 
   if (initializing) return null;
@@ -47,7 +46,6 @@ const AppView = () => {
             drawerActiveTintColor: "#fff",
             drawerInactiveTintColor: "#333",
             drawerLabelStyle: {
-              // marginLeft: -25,
               fontFamily: "Roboto-Medium",
               fontSize: 15,
             },
