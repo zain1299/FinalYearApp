@@ -8,11 +8,12 @@ export default StyleSheet.create({
   imageChild: {
     backgroundColor: "white",
     paddingLeft: wp(4),
-    paddingRight: wp(7),
+    paddingRight: wp(6),
     borderRadius: wp(5),
     marginTop: wp(6),
     marginHorizontal: hp(3.5),
     minWidth: wp(35),
+    maxWidth: wp(35),
   },
   homeCard: {
     backgroundColor: "white",

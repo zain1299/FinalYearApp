@@ -3,6 +3,12 @@ import { Dimensions, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 const CustomLineChart = () => {
+  var storePreviousData = Math.floor(Math.random() * 100 + 1);
+  var storePreviousData1 = Math.floor(Math.random() * 100 + 1);
+  var storePreviousData2 = Math.floor(Math.random() * 100 + 1);
+  var storePreviousData3 = Math.floor(Math.random() * 100 + 1);
+  var storePreviousData4 = Math.floor(Math.random() * 100 + 1);
+
   return (
     <View>
       <LineChart
@@ -11,18 +17,11 @@ const CustomLineChart = () => {
           datasets: [
             {
               data: [
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
+                storePreviousData,
+                storePreviousData1,
+                storePreviousData2,
+                storePreviousData3,
+                storePreviousData4,
               ],
             },
           ],

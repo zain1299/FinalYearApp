@@ -1,16 +1,34 @@
 import React from "react";
-import { SafeAreaView, Text, View, ScrollView } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 // import components
 import { Card } from "../../Components";
 //  import style
 import style from "./style";
 // import pictures
-import { fireImage, gasImage, currentImage } from "../../assets";
+import { fireImage, gasImage, currentImage, backImage } from "../../assets";
 
 const MotorDetails = () => {
   return (
     <ScrollView>
-      <Text style={style.heading}>Motor Details</Text>
+      <View style={style.menuContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
+          <Image style={style.menu} source={backImage} />
+        </TouchableOpacity>
+
+        <Text style={style.heading}>Motor Details</Text>
+      </View>
+
       <SafeAreaView style={style.mainContainer}>
         <View style={style.childContainer}>
           <View>

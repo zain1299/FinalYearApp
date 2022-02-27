@@ -12,7 +12,7 @@ export default StyleSheet.create({
     textAlign: "center",
     textTransform: "uppercase",
     padding: wp(5),
-    paddingHorizontal: wp(30),
+    paddingHorizontal: wp(25),
     // marginTop: hp(1),
   },
   childContainer: {

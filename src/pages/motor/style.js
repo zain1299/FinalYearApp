@@ -10,11 +10,9 @@ export default StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
-    width: wp("100%"),
-    backgroundColor: "#5359D1",
     textTransform: "uppercase",
     padding: wp(5),
-    // marginTop: hp(2),
+    paddingHorizontal: wp(25),
   },
   childContainer: {
     flex: 1,
@@ -59,5 +57,17 @@ export default StyleSheet.create({
     borderRadius: wp(5),
     marginTop: wp(6),
     marginHorizontal: hp(3.5),
+  },
+  menuContainer: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    backgroundColor: "#5359D1",
+  },
+  menu: {
+    width: wp(6),
+    height: hp(5),
+    marginLeft: wp(2.5),
+    marginTop: wp(4),
   },
 });

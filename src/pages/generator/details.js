@@ -15,6 +15,7 @@ import {
   temperatureImage,
   gasImage,
   backImage,
+  currentImage,
 } from "../../assets";
 
 const GeneratorDetails = ({ navigation }) => {
@@ -56,12 +57,41 @@ const GeneratorDetails = ({ navigation }) => {
             }}
           />
           <Card
+            title="Current"
+            image={currentImage}
+            onPress={() => {
+              navigation.navigate("GraphDetails", {
+                name: "Current",
+              });
+            }}
+          />
+
+          <Card
+            title="Volt"
+            image={currentImage}
+            onPress={() => {
+              navigation.navigate("GraphDetails", {
+                name: "Volt",
+              });
+            }}
+          />
+
+          <Card
             title="Temp"
             image={temperatureImage}
             readings={`${generatorRandomValues} °C`}
           />
           <Card title="Gas" image={gasImage} readings={"Normal"} />
           <Card title="Fire" image={fireImage} readings={"no"} />
+          <Card
+            title="Electro Magnetic"
+            image={fireImage}
+            onPress={() => {
+              navigation.navigate("GraphDetails", {
+                name: "Electro Magnetic",
+              });
+            }}
+          />
         </View>
       </SafeAreaView>
     </ScrollView>
