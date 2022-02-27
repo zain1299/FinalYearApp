@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { generatorVibrationImage, menuImage } from "../../assets";
+import { generatorVibrationImage, menuImage, motorImage } from "../../assets";
 import { Cards } from "../../Components";
 import database from "@react-native-firebase/database";
 import { firebase } from "@react-native-firebase/database";
@@ -56,7 +56,7 @@ const Home = ({ navigation }) => {
 
             <Cards
               title="Motor"
-              image={generatorVibrationImage}
+              image={motorImage}
               isActive={"active"}
               onPress={() => {
                 navigation.navigate("MotorDetails");
