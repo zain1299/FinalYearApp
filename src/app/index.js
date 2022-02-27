@@ -74,7 +74,7 @@ const AppView = () => {
             options={{
               drawerLabel: () => null,
               title: null,
-              drawerIcon: () => null,
+              // drawerIcon: () => null,
               drawerActiveBackgroundColor: null,
             }}
           />

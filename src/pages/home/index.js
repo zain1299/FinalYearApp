@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { generatorVibrationImage, menuImage, motorImage } from "../../assets";
+import { generatorImage, menuImage, motorImage } from "../../assets";
 import { Cards } from "../../Components";
 import database from "@react-native-firebase/database";
 import { firebase } from "@react-native-firebase/database";
@@ -33,7 +33,7 @@ const Home = ({ navigation }) => {
           <View style={style.imageContainer}>
             <Cards
               title="Generator"
-              image={generatorVibrationImage}
+              image={generatorImage}
               isActive={"active"}
               onPress={() => {
                 navigation.navigate("GeneratorDetalis");

@@ -16,6 +16,8 @@ import {
   gasImage,
   backImage,
   currentImage,
+  voltImage,
+  electroImage,
 } from "../../assets";
 import { useSelector } from "react-redux";
 import database from "@react-native-firebase/database";
@@ -52,7 +54,7 @@ const GeneratorDetails = ({ navigation }) => {
       <View style={style.menuContainer}>
         <TouchableOpacity
           onPress={() => {
-            navigation.goBack();
+            navigation?.goBack();
           }}
         >
           <Image style={style.menu} source={backImage} />
@@ -93,7 +95,7 @@ const GeneratorDetails = ({ navigation }) => {
 
           <Card
             title="Volt"
-            image={currentImage}
+            image={voltImage}
             onPress={() => {
               navigation.navigate("GraphDetails", {
                 name: "Volt",
@@ -110,7 +112,7 @@ const GeneratorDetails = ({ navigation }) => {
           <Card title="Fire" image={fireImage} readings={"no"} />
           <Card
             title="Electro Magnetic"
-            image={fireImage}
+            image={electroImage}
             onPress={() => {
               navigation.navigate("GraphDetails", {
                 name: "Electro Magnetic",

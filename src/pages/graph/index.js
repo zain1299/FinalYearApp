@@ -17,17 +17,17 @@ const GraphDetails = ({ route, navigation }) => {
       <View style={style.menuContainer}>
         <TouchableOpacity
           onPress={() => {
-            navigation.goBack();
+            navigation?.goBack();
           }}
         >
           <Image style={style.menu} source={backImage} />
         </TouchableOpacity>
-        <Text style={style.heading}>{route.params?.name}</Text>
+        <Text style={style.heading}>{route?.params?.name}</Text>
       </View>
 
       <SafeAreaView>
         <View>
-          <LineChart data={route.params?.name} />
+          <LineChart data={route?.params?.name} />
         </View>
       </SafeAreaView>
     </ScrollView>

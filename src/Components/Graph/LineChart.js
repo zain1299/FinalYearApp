@@ -5,49 +5,48 @@ import { useSelector } from "react-redux";
 import database from "@react-native-firebase/database";
 
 const CustomLineChart = ({ data }) => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state?.user);
 
-  const [state, setState] = useState([222]);
+  const [state, setState] = useState([22]);
+  const record = [];
 
-  // useEffect(async () => {
-  //   const onValueChange = database()
-  //     .ref(`/UsersData/${user.id}`)
-  //     .on("value", (snapshot) => {
-  //       let data = [...state];
-  //       if (state.length < 15) {
-  //         data.push(snapshot.val().test.Voltage);
-  //         setState(data);
-  //       } else {
-  //         data?.shift();
-  //         setState(data);
-  //       }
-  //     });
+  useEffect(async () => {
+    const onValueChange = database()
+      .ref(`/UsersData/${user.id}`)
+      .on("value", (snapshot) => {
+        record.push(snapshot.val().Temperature);
+        if (record?.length > 10) {
+          record.length = 8;
+          record.shift();
+        }
+        // console.log("record", record);
 
-  //   // Stop listening for updates when no longer required
-  //   return () =>
-  //     database().ref(`/UsersData/${user.id}`).off("value", onValueChange);
-  // }, [user.id]);
+        setState([...record]);
+      });
 
-  // console.log("state", state.length);
+    // Stop listening for updates when no longer required
+    return () =>
+      database().ref(`/UsersData/${user.id}`).off("value", onValueChange);
+  }, [user.id]);
 
   return (
     <View>
       <LineChart
         data={{
-          // labels: ["January", "February", "March", "April", "May", "June"],
+          labels: ["Jan", "Feb", "March", "April", "May", "June"],
           datasets: [
             {
               data: state,
             },
           ],
         }}
-        width={Dimensions.get("window").width - 60}
+        width={Dimensions?.get("window")?.width - 60}
         height={220}
-        yAxisLabel="$"
-        yAxisSuffix="k"
+        // yAxisLabel=""
+        yAxisSuffix="    "
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
-          // backgroundColor: "#e26a00",
+          backgroundColor: "#e26a00",
           backgroundGradientFrom: "#5359D1",
           backgroundGradientTo: "#5359D1",
           decimalPlaces: 2, // optional, defaults to 2dp

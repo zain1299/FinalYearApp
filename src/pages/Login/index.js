@@ -6,6 +6,7 @@ import {
   TextInput,
   StatusBar,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import LinearGradient from "react-native-linear-gradient";
@@ -29,6 +30,8 @@ const SignInScreen = ({ navigation }) => {
     isValidUser: true,
     isValidPassword: true,
   });
+
+  const [loading, setLoading] = React.useState(false);
 
   const { colors } = useTheme();
 
@@ -96,15 +99,17 @@ const SignInScreen = ({ navigation }) => {
       ]);
       return;
     } else {
+      setLoading(true);
       auth()
         ?.signInWithEmailAndPassword(data.email, data.password)
         ?.then((res) => {
+          setLoading(false);
           dispatch(loginAction(res));
-          console.log("resfdf", res);
-          navigation.navigate("Home");
+          // navigation.navigate("Home");
         })
         .catch((error) => {
           if (error.code === "auth/invalid-email") {
+            setLoading(false);
             Alert.alert(
               "Wrong Input!",
               "That email address or password is invalid!.",
@@ -208,16 +213,20 @@ const SignInScreen = ({ navigation }) => {
               colors={["#08d4c4", "#01ab9d"]}
               style={styles.signIn}
             >
-              <Text
-                style={[
-                  styles.textSign,
-                  {
-                    color: "#fff",
-                  },
-                ]}
-              >
-                Sign In
-              </Text>
+              {loading ? (
+                <ActivityIndicator size="small" color="#0000ff" />
+              ) : (
+                <Text
+                  style={[
+                    styles.textSign,
+                    {
+                      color: "#fff",
+                    },
+                  ]}
+                >
+                  Sign In
+                </Text>
+              )}
             </LinearGradient>
           </TouchableOpacity>
 

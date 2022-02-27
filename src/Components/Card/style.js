@@ -14,6 +14,8 @@ export default StyleSheet.create({
     marginHorizontal: hp(3.5),
     minWidth: wp(35),
     maxWidth: wp(35),
+    minHeight: wp(35),
+    alignItems: "center",
   },
   homeCard: {
     backgroundColor: "white",
@@ -25,15 +27,15 @@ export default StyleSheet.create({
     minWidth: wp("80%"),
   },
   imageText1: {
-    fontSize: wp(5),
+    fontSize: wp(6),
     display: "flex",
     textAlign: "center",
     color: "green",
   },
   images: {
-    width: wp(20),
-    height: wp(20),
-    marginLeft: wp(1.5),
+    width: wp(15),
+    height: wp(15),
+    marginLeft: wp(3),
     marginTop: hp(2),
   },
   imageText: {
