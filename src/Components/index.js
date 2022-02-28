@@ -1,11 +1,17 @@
 import CustomDrawer from "./Drawer";
 import CustomCard from "./Card";
 import HomeCard from "./Card/card";
-import CustomLineChart from "./Graph/LineChart";
+import TempLineChart from "./Graph/TempLineChart";
+import VibrationChart from "./Graph/VibrationChart";
+import VoltChart from "./Graph/VoltChart";
+import CurrentChart from "./Graph/CurrentChart";
 
 export {
   CustomCard as Card,
   CustomDrawer as Drawer,
-  CustomLineChart as LineChart,
+  TempLineChart,
   HomeCard as Cards,
+  VibrationChart,
+  VoltChart,
+  CurrentChart,
 };

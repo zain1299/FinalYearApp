@@ -4,29 +4,26 @@ import { LineChart } from "react-native-chart-kit";
 import { useSelector } from "react-redux";
 import database from "@react-native-firebase/database";
 
-const CustomLineChart = ({ data }) => {
+const VoltChart = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
   const [state, setState] = useState([22]);
-  const record = [];
+  const temp = [];
 
   useEffect(async () => {
-    const onValueChange = database()
-      .ref(`/UsersData/${user.id}`)
-      .on("value", (snapshot) => {
-        record.push(snapshot.val().Temperature);
-        if (record?.length > 10) {
-          record.length = 8;
-          record.shift();
-        }
-        // console.log("record", record);
-
-        setState([...record]);
-      });
-
-    // Stop listening for updates when no longer required
-    return () =>
-      database().ref(`/UsersData/${user.id}`).off("value", onValueChange);
+    // const onValueChange = database()
+    //   .ref(`/UsersDatas/`)
+    //   .on("value", (vibration) => {
+    //     temp.push(Math.abs(vibration.val()?.Vibration));
+    //     if (temp?.length > 10) {
+    //       temp.length = 8;
+    //       temp.shift();
+    //     }
+    //     console.log("temp", temp);
+    //     setState([...temp]);
+    //   });
+    // // Stop listening for updates when no longer required
+    // return () => database().ref(`/UsersDatas/`).off("value", onValueChange);
   }, [user.id]);
 
   return (
@@ -36,7 +33,14 @@ const CustomLineChart = ({ data }) => {
           labels: ["Jan", "Feb", "March", "April", "May", "June"],
           datasets: [
             {
-              data: state,
+              data: [
+                Math.random(),
+                Math.random(),
+                Math.random(),
+                Math.random(),
+                Math.random(),
+                Math.random(),
+              ],
             },
           ],
         }}
@@ -73,4 +77,4 @@ const CustomLineChart = ({ data }) => {
   );
 };
 
-export default CustomLineChart;
+export default VoltChart;

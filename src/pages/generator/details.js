@@ -106,7 +106,11 @@ const GeneratorDetails = ({ navigation }) => {
           <Card
             title="Temp"
             image={temperatureImage}
-            readings={`${generatorRandomValues} °C`}
+            onPress={() => {
+              navigation.navigate("GraphDetails", {
+                name: "Temperature",
+              });
+            }}
           />
           <Card title="Gas" image={gasImage} readings={"Normal"} />
           <Card title="Fire" image={fireImage} readings={"no"} />

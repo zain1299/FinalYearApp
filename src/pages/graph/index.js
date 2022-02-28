@@ -8,10 +8,17 @@ import {
   Image,
 } from "react-native";
 import { backImage } from "../../assets";
-import { LineChart } from "../../Components";
+import {
+  CurrentChart,
+  TempLineChart,
+  VibrationChart,
+  VoltChart,
+} from "../../Components";
 import style from "./style";
 
 const GraphDetails = ({ route, navigation }) => {
+  let name = route.params.name;
+
   return (
     <ScrollView>
       <View style={style.menuContainer}>
@@ -25,11 +32,31 @@ const GraphDetails = ({ route, navigation }) => {
         <Text style={style.heading}>{route?.params?.name}</Text>
       </View>
 
-      <SafeAreaView>
-        <View>
-          <LineChart data={route?.params?.name} />
-        </View>
-      </SafeAreaView>
+      {name === "Vibration" ? (
+        <SafeAreaView>
+          <View>
+            <VibrationChart />
+          </View>
+        </SafeAreaView>
+      ) : name === "Current" ? (
+        <SafeAreaView>
+          <View>
+            <CurrentChart />
+          </View>
+        </SafeAreaView>
+      ) : name === "Volt" ? (
+        <SafeAreaView>
+          <View>
+            <VoltChart />
+          </View>
+        </SafeAreaView>
+      ) : (
+        <SafeAreaView>
+          <View>
+            <TempLineChart />
+          </View>
+        </SafeAreaView>
+      )}
     </ScrollView>
   );
 };
