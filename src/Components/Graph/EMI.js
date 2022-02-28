@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Dimensions, View, Text } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { useSelector } from "react-redux";
-import style from "./style";
 import database from "@react-native-firebase/database";
+import style from "./style";
 
-const VoltChart = ({ data }) => {
+const EMI = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
   const [state, setState] = useState([22]);
@@ -20,7 +20,6 @@ const VoltChart = ({ data }) => {
     //       temp.length = 8;
     //       temp.shift();
     //     }
-    //     console.log("temp", temp);
     //     setState([...temp]);
     //   });
     // // Stop listening for updates when no longer required
@@ -35,12 +34,12 @@ const VoltChart = ({ data }) => {
           datasets: [
             {
               data: [
-                Math.floor(Math.random() * 200),
-                Math.floor(Math.random() * 200),
-                Math.floor(Math.random() * 200),
-                Math.floor(Math.random() * 200),
-                Math.floor(Math.random() * 200),
-                Math.floor(Math.random() * 200),
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
+                Math.random() * 100,
               ],
             },
           ],
@@ -77,16 +76,14 @@ const VoltChart = ({ data }) => {
 
       <View style={style.childContainer}>
         <View>
-          <Text style={style.text}>Real Time Voltage</Text>
-          <Text style={style.text}>226 v</Text>
-        </View>
-        <View>
-          <Text style={style.text}>Average Voltage</Text>
-          <Text style={style.text}>224 v</Text>
+          <Text style={style.text}>Real Time Data</Text>
+          <Text style={style.text}>
+            {state[6] ? Math.floor(state[6]) : Math.random() * 100}
+          </Text>
         </View>
       </View>
     </View>
   );
 };
 
-export default VoltChart;
+export default EMI;

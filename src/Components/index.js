@@ -5,6 +5,7 @@ import TempLineChart from "./Graph/TempLineChart";
 import VibrationChart from "./Graph/VibrationChart";
 import VoltChart from "./Graph/VoltChart";
 import CurrentChart from "./Graph/CurrentChart";
+import EMI from "./Graph/EMI";
 
 export {
   CustomCard as Card,
@@ -14,4 +15,5 @@ export {
   VibrationChart,
   VoltChart,
   CurrentChart,
+  EMI,
 };

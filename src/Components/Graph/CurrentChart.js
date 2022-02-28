@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, View } from "react-native";
+import { Dimensions, Text, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { useSelector } from "react-redux";
+import style from "./style";
 import database from "@react-native-firebase/database";
 
 const CurrentChart = ({ data }) => {
@@ -30,7 +31,7 @@ const CurrentChart = ({ data }) => {
     <View>
       <LineChart
         data={{
-          labels: ["Jan", "Feb", "March", "April", "May", "June"],
+          // labels: ["Jan", "Feb", "March", "April", "May", "June"],
           datasets: [
             {
               data: [
@@ -73,6 +74,17 @@ const CurrentChart = ({ data }) => {
           marginHorizontal: 25,
         }}
       />
+
+      <View style={style.childContainer}>
+        <View>
+          <Text style={style.text}>Real Time Current</Text>
+          <Text style={style.text}>226 v</Text>
+        </View>
+        <View>
+          <Text style={style.text}>Average Current</Text>
+          <Text style={style.text}>224 v</Text>
+        </View>
+      </View>
     </View>
   );
 };

@@ -13,6 +13,7 @@ import {
   TempLineChart,
   VibrationChart,
   VoltChart,
+  EMI,
 } from "../../Components";
 import style from "./style";
 
@@ -48,6 +49,12 @@ const GraphDetails = ({ route, navigation }) => {
         <SafeAreaView>
           <View>
             <VoltChart />
+          </View>
+        </SafeAreaView>
+      ) : name === "Electro Magnetic" ? (
+        <SafeAreaView>
+          <View>
+            <EMI />
           </View>
         </SafeAreaView>
       ) : (

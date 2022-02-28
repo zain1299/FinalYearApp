@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, View } from "react-native";
+import { Dimensions, View, Text } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { useSelector } from "react-redux";
 import database from "@react-native-firebase/database";
+import style from "./style";
 
 const VibrationChart = ({ data }) => {
   const user = useSelector((state) => state?.user);
@@ -30,7 +31,7 @@ const VibrationChart = ({ data }) => {
     <View>
       <LineChart
         data={{
-          labels: ["Jan", "Feb", "March", "April", "May", "June"],
+          // labels: ["Jan", "Feb", "March", "April", "May", "June"],
           datasets: [
             {
               data: state,
@@ -66,6 +67,15 @@ const VibrationChart = ({ data }) => {
           marginHorizontal: 25,
         }}
       />
+
+      <View style={style.childContainer}>
+        <View>
+          <Text style={style.text}>Real Time Vibration</Text>
+          <Text style={style.text}>
+            {state[6] ? Math.floor(state[6]) : "off"}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 };
