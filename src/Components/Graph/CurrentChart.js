@@ -8,23 +8,22 @@ import database from "@react-native-firebase/database";
 const CurrentChart = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
-  const [state, setState] = useState([222]);
+  const [state, setState] = useState([0]);
   const temp = [];
 
   useEffect(async () => {
-    // const onValueChange = database()
-    //   .ref(`/UsersDatas/`)
-    //   .on("value", (vibration) => {
-    //     temp.push(Math.abs(vibration.val()?.Vibration));
-    //     if (temp?.length > 10) {
-    //       temp.length = 8;
-    //       temp.shift();
-    //     }
-    //     console.log("temp", temp);
-    //     setState([...temp]);
-    //   });
-    // // Stop listening for updates when no longer required
-    // return () => database().ref(`/UsersDatas/`).off("value", onValueChange);
+    const onValueChange = database()
+      .ref(`/UsersDatas/`)
+      .on("value", (current) => {
+        temp.push(Math.abs(current.val()?.test?.Current));
+        if (temp?.length > 10) {
+          temp.length = 8;
+          temp.shift();
+        }
+        setState([...temp]);
+      });
+    // Stop listening for updates when no longer required
+    return () => database().ref(`/UsersDatas/`).off("value", onValueChange);
   }, [user.id]);
 
   return (
@@ -34,21 +33,14 @@ const CurrentChart = ({ data }) => {
           // labels: ["Jan", "Feb", "March", "April", "May", "June"],
           datasets: [
             {
-              data: [
-                Math.random(),
-                Math.random(),
-                Math.random(),
-                Math.random(),
-                Math.random(),
-                Math.random(),
-              ],
+              data: state,
             },
           ],
         }}
         width={Dimensions?.get("window")?.width - 60}
         height={220}
         // yAxisLabel=""
-        yAxisSuffix="    "
+        yAxisSuffix="  A"
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
           backgroundColor: "#e26a00",
@@ -78,11 +70,7 @@ const CurrentChart = ({ data }) => {
       <View style={style.childContainer}>
         <View>
           <Text style={style.text}>Real Time Current</Text>
-          <Text style={style.text}>226 v</Text>
-        </View>
-        <View>
-          <Text style={style.text}>Average Current</Text>
-          <Text style={style.text}>224 v</Text>
+          <Text style={style.text}>{`${state[5] ? state[5] : "0.0"} A`}</Text>
         </View>
       </View>
     </View>

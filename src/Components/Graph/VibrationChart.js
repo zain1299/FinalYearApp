@@ -72,7 +72,7 @@ const VibrationChart = ({ data }) => {
         <View>
           <Text style={style.text}>Real Time Vibration</Text>
           <Text style={style.text}>
-            {state[6] ? Math.floor(state[6]) : "off"}
+            {state[6] ? Math.floor(state[6]) : "0.001"}
           </Text>
         </View>
       </View>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, View } from "react-native";
+import { Dimensions, Text, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { useSelector } from "react-redux";
+import style from "./style";
 import database from "@react-native-firebase/database";
 
 const TempLineChart = ({ data }) => {
@@ -31,7 +32,7 @@ const TempLineChart = ({ data }) => {
     <View>
       <LineChart
         data={{
-          labels: ["Jan", "Feb", "March", "April", "May", "June"],
+          // labels: ["Jan", "Feb", "March", "April", "May", "June"],
           datasets: [
             {
               data: state,
@@ -41,7 +42,7 @@ const TempLineChart = ({ data }) => {
         width={Dimensions?.get("window")?.width - 60}
         height={220}
         // yAxisLabel=""
-        yAxisSuffix="    "
+        yAxisSuffix="  °C"
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
           backgroundColor: "#e26a00",
@@ -67,6 +68,13 @@ const TempLineChart = ({ data }) => {
           marginHorizontal: 25,
         }}
       />
+
+      <View style={style.childContainer}>
+        <View>
+          <Text style={style.text}>Real Temperature</Text>
+          <Text style={style.text}>{`${state[5] ? state[5] : 26} °C`}</Text>
+        </View>
+      </View>
     </View>
   );
 };
