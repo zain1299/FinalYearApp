@@ -9,13 +9,13 @@ const CurrentChart = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
   const [state, setState] = useState([0]);
-  const temp = [];
+  let temp = [];
 
   useEffect(async () => {
     const onValueChange = database()
-      .ref(`/UsersDatas/`)
+      .ref(`/UserDataSensors/`)
       .on("value", (current) => {
-        temp.push(Math.abs(current.val()?.test?.Current));
+        temp.push(Math.abs(current.val()?.Current));
         if (temp?.length > 10) {
           temp.length = 8;
           temp.shift();
@@ -23,7 +23,8 @@ const CurrentChart = ({ data }) => {
         setState([...temp]);
       });
     // Stop listening for updates when no longer required
-    return () => database().ref(`/UsersDatas/`).off("value", onValueChange);
+    return () =>
+      database().ref(`/UserDataSensors/`).off("value", onValueChange);
   }, [user.id]);
 
   return (

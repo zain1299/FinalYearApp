@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, View, Text } from "react-native";
+import { Dimensions, View, Text, Alert } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { useSelector } from "react-redux";
 import database from "@react-native-firebase/database";
@@ -8,22 +8,24 @@ import style from "./style";
 const EMI = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
-  const [state, setState] = useState([22]);
-  const temp = [];
+  const [state, setState] = useState([55]);
+  let temp = [];
 
   useEffect(async () => {
-    // const onValueChange = database()
-    //   .ref(`/UsersDatas/`)
-    //   .on("value", (vibration) => {
-    //     temp.push(Math.abs(vibration.val()?.Vibration));
-    //     if (temp?.length > 10) {
-    //       temp.length = 8;
-    //       temp.shift();
-    //     }
-    //     setState([...temp]);
-    //   });
-    // // Stop listening for updates when no longer required
-    // return () => database().ref(`/UsersDatas/`).off("value", onValueChange);
+    const onValueChange = database()
+      .ref(`/UserDataSensors/`)
+      .on("value", (vibration) => {
+        temp.push(Math.abs(vibration.val()?.Frequency));
+
+        if (temp?.length > 10) {
+          temp.length = 8;
+          temp.shift();
+        }
+        setState([...temp]);
+      });
+    // Stop listening for updates when no longer required
+    return () =>
+      database().ref(`/UserDataSensors/`).off("value", onValueChange);
   }, [user.id]);
 
   return (
@@ -33,14 +35,7 @@ const EMI = ({ data }) => {
           // labels: ["Jan", "Feb", "March", "April", "May", "June"],
           datasets: [
             {
-              data: [
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-              ],
+              data: state,
             },
           ],
         }}
@@ -77,9 +72,13 @@ const EMI = ({ data }) => {
       <View style={style.childContainer}>
         <View>
           <Text style={style.text}>Real Time Data</Text>
-          <Text style={style.text}>
-            {state[6] ? Math.floor(state[6]) : Math.random() * 100}
-          </Text>
+          <Text style={style.text}>{state[6] ? state[6] : 50}</Text>
+
+          {state.length === 6 && state[6] < 45
+            ? Alert.alert("Frequency Low")
+            : state[6] > 55
+            ? Alert.alert("Frequency High")
+            : null}
         </View>
       </View>
     </View>

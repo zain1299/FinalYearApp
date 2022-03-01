@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { generatorImage, menuImage, motorImage } from "../../assets";
 import { Cards } from "../../Components";
@@ -34,7 +35,7 @@ const Home = ({ navigation }) => {
             <Cards
               title="Generator"
               image={generatorImage}
-              isActive={"active"}
+              isActive={"Active"}
               onPress={() => {
                 navigation.navigate("GeneratorDetalis");
               }}
@@ -43,10 +44,14 @@ const Home = ({ navigation }) => {
             <Cards
               title="Motor"
               image={motorImage}
-              isActive={"active"}
-              onPress={() => {
-                navigation.navigate("MotorDetails");
-              }}
+              isActive={"Inactive"}
+              onPress={
+                () => Alert.alert("Device is not Active")
+
+                //   {
+                //   // navigation.navigate("MotorDetails");
+                // }
+              }
             />
           </View>
         </SafeAreaView>

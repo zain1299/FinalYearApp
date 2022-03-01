@@ -9,11 +9,11 @@ const VibrationChart = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
   const [state, setState] = useState([22]);
-  const temp = [];
+  let temp = [];
 
   useEffect(async () => {
     const onValueChange = database()
-      .ref(`/UsersDatas/`)
+      .ref(`/UserDataSensors/`)
       .on("value", (vibration) => {
         temp.push(Math.abs(vibration.val()?.Vibration));
         if (temp?.length > 10) {
@@ -24,7 +24,8 @@ const VibrationChart = ({ data }) => {
         setState([...temp]);
       });
     // Stop listening for updates when no longer required
-    return () => database().ref(`/UsersDatas/`).off("value", onValueChange);
+    return () =>
+      database().ref(`/UserDataSensors/`).off("value", onValueChange);
   }, [user.id]);
 
   return (

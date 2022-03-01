@@ -9,13 +9,13 @@ const VoltChart = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
   const [state, setState] = useState([222]);
-  const temp = [];
+  let temp = [];
 
   useEffect(async () => {
     const onValueChange = database()
-      .ref(`/UsersData/${user.id}`)
+      .ref(`/UserDataSensors/`)
       .on("value", (vibration) => {
-        temp.push(Math.abs(vibration.val()?.test?.Voltage));
+        temp.push(Math.abs(vibration.val()?.Voltage));
         if (temp?.length > 10) {
           temp.length = 8;
           temp.shift();
@@ -24,7 +24,8 @@ const VoltChart = ({ data }) => {
       });
 
     // Stop listening for updates when no longer required
-    return () => database().ref(`/UsersData/`).off("value", onValueChange);
+    return () =>
+      database().ref(`/UserDataSensors/`).off("value", onValueChange);
   }, [user.id]);
 
   return (
@@ -35,14 +36,6 @@ const VoltChart = ({ data }) => {
           datasets: [
             {
               data: state,
-              // data: [
-              //   Math.floor(Math.random() * 200),
-              //   Math.floor(Math.random() * 200),
-              //   Math.floor(Math.random() * 200),
-              //   Math.floor(Math.random() * 200),
-              //   Math.floor(Math.random() * 200),
-              //   Math.floor(Math.random() * 200),
-              // ],
             },
           ],
         }}

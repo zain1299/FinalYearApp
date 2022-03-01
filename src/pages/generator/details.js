@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  Alert,
 } from "react-native";
 import { Card } from "../../Components";
 import style from "./style";
@@ -28,26 +29,20 @@ const GeneratorDetails = ({ navigation }) => {
 
   const user = useSelector((state) => state.user);
 
-  const [state, setState] = useState();
+  let [state, setState] = useState([0]);
 
-  // useEffect(async () => {
-  //   const onValueChange = database()
-  //     .ref(`/UsersData/${user.id}`)
-  //     .on("value", (snapshot) => {
-  //       // let arr = [];
+  useEffect(async () => {
+    const onValueChange = database()
+      .ref(`/UserDataSensors/`)
+      .on("value", (vibration) => {
+        let temp = Math.abs(vibration.val()?.Fire);
 
-  //       // if (arr?.length < 10) {
-  //       //   const data = snapshot.val().test.Voltage;
-
-  //       //   arr.push(snapshot.val().test.Voltage);
-  //       // }
-  //       setState(snapshot.val().test.Voltage);
-  //     });
-
-  //   // Stop listening for updates when no longer requiredSS
-  //   return () =>
-  //     database().ref(`/UsersData/${user.id}`).off("value", onValueChange);
-  // }, [user.id]);
+        setState(temp);
+      });
+    // Stop listening for updates when no longer required
+    return () =>
+      database().ref(`/UserDataSensors/`).off("value", onValueChange);
+  }, [user.id]);
 
   return (
     <ScrollView>
@@ -112,14 +107,28 @@ const GeneratorDetails = ({ navigation }) => {
               });
             }}
           />
-          <Card title="Gas" image={gasImage} readings={"Normal"} />
-          <Card title="Fire" image={fireImage} readings={"no"} />
           <Card
-            title="Electro Magnetic"
+            title="Gas"
+            image={gasImage}
+            onPress={() => {
+              navigation.navigate("GraphDetails", {
+                name: "Gas",
+              });
+            }}
+          />
+          {state === 1 ? (
+            <Card title="Fire" image={fireImage} readings={"yes"} />
+          ) : (
+            <Card title="Fire" image={fireImage} readings={"no"} />
+          )}
+          {state === 1 ? Alert.alert("Fire Fire Fire") : null}
+
+          <Card
+            title="Frequency"
             image={electroImage}
             onPress={() => {
               navigation.navigate("GraphDetails", {
-                name: "Electro Magnetic",
+                name: "Frequency",
               });
             }}
           />

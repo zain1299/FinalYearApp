@@ -14,6 +14,7 @@ import {
   VibrationChart,
   VoltChart,
   EMI,
+  GasChart,
 } from "../../Components";
 import style from "./style";
 
@@ -25,7 +26,7 @@ const GraphDetails = ({ route, navigation }) => {
       <View style={style.menuContainer}>
         <TouchableOpacity
           onPress={() => {
-            navigation?.goBack();
+            navigation?.navigate("GeneratorDetalis");
           }}
         >
           <Image style={style.menu} source={backImage} />
@@ -51,10 +52,16 @@ const GraphDetails = ({ route, navigation }) => {
             <VoltChart />
           </View>
         </SafeAreaView>
-      ) : name === "Electro Magnetic" ? (
+      ) : name === "Frequency" ? (
         <SafeAreaView>
           <View>
             <EMI />
+          </View>
+        </SafeAreaView>
+      ) : name === "Gas" ? (
+        <SafeAreaView>
+          <View>
+            <GasChart />
           </View>
         </SafeAreaView>
       ) : (

@@ -11,9 +11,9 @@ export default StyleSheet.create({
     paddingRight: wp(6),
     borderRadius: wp(5),
     marginTop: wp(6),
-    marginHorizontal: hp(3.5),
-    minWidth: wp(35),
-    maxWidth: wp(35),
+    marginHorizontal: hp(3),
+    minWidth: wp(38),
+    maxWidth: wp(36),
     minHeight: wp(35),
     alignItems: "center",
   },
@@ -40,7 +40,7 @@ export default StyleSheet.create({
   },
   imageText: {
     fontSize: wp(5),
-    marginLeft: wp(4),
+    marginLeft: wp(3),
   },
   imageContainer: {
     display: "flex",

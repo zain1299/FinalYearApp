@@ -5,22 +5,21 @@ import { useSelector } from "react-redux";
 import style from "./style";
 import database from "@react-native-firebase/database";
 
-const TempLineChart = ({ data }) => {
+const GasChart = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
-  const [state, setState] = useState([22]);
+  let [state, setState] = useState([100]);
   let temp = [];
 
   useEffect(async () => {
     const onValueChange = database()
       .ref(`/UserDataSensors/`)
-      .on("value", (temperature) => {
-        temp.push(temperature.val()?.Temperature);
+      .on("value", (gas) => {
+        temp.push(Math.abs(gas.val()?.Gas));
         if (temp?.length > 10) {
           temp.length = 8;
           temp.shift();
         }
-
         setState([...temp]);
       });
     // Stop listening for updates when no longer required
@@ -42,7 +41,7 @@ const TempLineChart = ({ data }) => {
         width={Dimensions?.get("window")?.width - 60}
         height={220}
         // yAxisLabel=""
-        yAxisSuffix="  °C"
+        yAxisSuffix="  ppm"
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
           backgroundColor: "#e26a00",
@@ -71,12 +70,12 @@ const TempLineChart = ({ data }) => {
 
       <View style={style.childContainer}>
         <View>
-          <Text style={style.text}>Real Temperature</Text>
-          <Text style={style.text}>{`${state[5] ? state[5] : 26} °C`}</Text>
+          <Text style={style.text}>Real Time Reading</Text>
+          <Text style={style.text}>{`${state[5] ? state[5] : 100} ppm`}</Text>
         </View>
       </View>
     </View>
   );
 };
 
-export default TempLineChart;
+export default GasChart;

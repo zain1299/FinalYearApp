@@ -6,14 +6,16 @@ import VibrationChart from "./Graph/VibrationChart";
 import VoltChart from "./Graph/VoltChart";
 import CurrentChart from "./Graph/CurrentChart";
 import EMI from "./Graph/EMI";
+import GasChart from "./Graph/GasChart";
 
 export {
   CustomCard as Card,
   CustomDrawer as Drawer,
-  TempLineChart,
   HomeCard as Cards,
+  TempLineChart,
   VibrationChart,
   VoltChart,
   CurrentChart,
   EMI,
+  GasChart,
 };

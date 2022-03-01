@@ -15,8 +15,6 @@ import LinearGradient from "react-native-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import { useDispatch } from "react-redux";
-
-//  import style
 import styles from "./style";
 
 const Signup = ({ navigation }) => {
@@ -100,14 +98,12 @@ const Signup = ({ navigation }) => {
         })
         .catch((error) => {
           if (error.code === "auth/email-already-in-use") {
-            console.log("That email address is already in use!");
+            Alert.alert("That email address is already in use!");
           }
 
           if (error.code === "auth/invalid-email") {
-            console.log("That email address is invalid!");
+            Alert.alert("That email address is invalid!");
           }
-
-          console.error(error);
         });
     }
   };
