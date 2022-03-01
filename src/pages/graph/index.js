@@ -15,6 +15,7 @@ import {
   VoltChart,
   EMI,
   GasChart,
+  Power,
 } from "../../Components";
 import style from "./style";
 
@@ -62,6 +63,12 @@ const GraphDetails = ({ route, navigation }) => {
         <SafeAreaView>
           <View>
             <GasChart />
+          </View>
+        </SafeAreaView>
+      ) : name === "Power" ? (
+        <SafeAreaView>
+          <View>
+            <Power />
           </View>
         </SafeAreaView>
       ) : (

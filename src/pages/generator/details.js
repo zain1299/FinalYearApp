@@ -19,6 +19,7 @@ import {
   currentImage,
   voltImage,
   electroImage,
+  powerImage,
 } from "../../assets";
 import { useSelector } from "react-redux";
 import database from "@react-native-firebase/database";
@@ -129,6 +130,16 @@ const GeneratorDetails = ({ navigation }) => {
             onPress={() => {
               navigation.navigate("GraphDetails", {
                 name: "Frequency",
+              });
+            }}
+          />
+
+          <Card
+            title="Power"
+            image={powerImage}
+            onPress={() => {
+              navigation.navigate("GraphDetails", {
+                name: "Power",
               });
             }}
           />

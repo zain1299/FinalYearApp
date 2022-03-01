@@ -12,6 +12,7 @@ import userImage from "./images/user.png";
 import motorImage from "./images/motor.png";
 import voltImage from "./images/volt.png";
 import electroImage from "./images/elctroImage.png";
+import powerImage from "./images/power.png";
 
 export {
   fireImage,
@@ -27,4 +28,5 @@ export {
   motorImage,
   voltImage,
   electroImage,
+  powerImage,
 };

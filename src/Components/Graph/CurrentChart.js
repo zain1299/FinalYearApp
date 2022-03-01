@@ -8,7 +8,7 @@ import database from "@react-native-firebase/database";
 const CurrentChart = ({ data }) => {
   const user = useSelector((state) => state?.user);
 
-  const [state, setState] = useState([0]);
+  let [state, setState] = useState([0]);
   let temp = [];
 
   useEffect(async () => {

@@ -11,8 +11,8 @@ export default StyleSheet.create({
     paddingRight: wp(6),
     borderRadius: wp(5),
     marginTop: wp(6),
-    marginHorizontal: hp(3),
-    minWidth: wp(38),
+    marginHorizontal: hp(2),
+    minWidth: wp(37),
     maxWidth: wp(36),
     minHeight: wp(35),
     alignItems: "center",
@@ -35,7 +35,7 @@ export default StyleSheet.create({
   images: {
     width: wp(15),
     height: wp(15),
-    marginLeft: wp(3),
+    marginLeft: wp(2.5),
     marginTop: hp(2),
   },
   imageText: {

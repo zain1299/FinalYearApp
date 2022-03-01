@@ -7,6 +7,7 @@ import VoltChart from "./Graph/VoltChart";
 import CurrentChart from "./Graph/CurrentChart";
 import EMI from "./Graph/EMI";
 import GasChart from "./Graph/GasChart";
+import Power from "./Graph/Power";
 
 export {
   CustomCard as Card,
@@ -18,4 +19,5 @@ export {
   CurrentChart,
   EMI,
   GasChart,
+  Power,
 };
