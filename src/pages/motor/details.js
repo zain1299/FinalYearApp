@@ -7,11 +7,8 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-// import components
 import { Card } from "../../Components";
-//  import style
 import style from "./style";
-// import pictures
 import { fireImage, gasImage, currentImage, backImage } from "../../assets";
 
 const MotorDetails = ({ navigation }) => {

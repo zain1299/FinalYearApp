@@ -25,9 +25,6 @@ import { useSelector } from "react-redux";
 import database from "@react-native-firebase/database";
 
 const GeneratorDetails = ({ navigation }) => {
-  const randomValues = Math.floor(Math.random() * 4 + 62);
-  const generatorRandomValues = Math.floor(Math.random() * 4 + 102);
-
   const user = useSelector((state) => state.user);
 
   let [state, setState] = useState([0]);
@@ -40,7 +37,7 @@ const GeneratorDetails = ({ navigation }) => {
 
         setState(temp);
       });
-    // Stop listening for updates when no longer required
+
     return () =>
       database().ref(`/UserDataSensors/`).off("value", onValueChange);
   }, [user.id]);

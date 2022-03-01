@@ -38,7 +38,7 @@ const Power = ({ data }) => {
 
         setFactorState(value3);
       });
-    // Stop listening for updates when no longer required
+
     return () =>
       database()
         .ref(`/UserDataSensors/`)
@@ -48,7 +48,7 @@ const Power = ({ data }) => {
   return (
     <View style={style.childContainer}>
       <View>
-        <Text style={style.text}>Energy</Text>
+        <Text style={style.text}>Total Consumption</Text>
         <Text style={style.text}>{energyState ? energyState : 0}</Text>
       </View>
 

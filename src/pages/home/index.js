@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   SafeAreaView,
   Text,
@@ -10,11 +10,7 @@ import {
 } from "react-native";
 import { generatorImage, menuImage, motorImage } from "../../assets";
 import { Cards } from "../../Components";
-import database from "@react-native-firebase/database";
-import { firebase } from "@react-native-firebase/database";
-
 import style from "./style";
-import { useSelector } from "react-redux";
 
 const Home = ({ navigation }) => {
   return (
@@ -45,13 +41,7 @@ const Home = ({ navigation }) => {
               title="Motor"
               image={motorImage}
               isActive={"Inactive"}
-              onPress={
-                () => Alert.alert("Device is not Active")
-
-                //   {
-                //   // navigation.navigate("MotorDetails");
-                // }
-              }
+              onPress={() => Alert.alert("Device is not Active")}
             />
           </View>
         </SafeAreaView>

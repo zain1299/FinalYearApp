@@ -27,11 +27,6 @@ const CustomDrawer = (props, { navigation }) => {
       .signOut()
       .then(() => {
         dispatch(logout());
-        // navigation.reset({
-        //   index: 0,
-        //   routes: [{ name: "Login" }],
-        // });
-        // navigation.navigate("Login");
       });
   };
 

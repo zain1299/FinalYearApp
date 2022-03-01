@@ -105,7 +105,6 @@ const SignInScreen = ({ navigation }) => {
         ?.then((res) => {
           setLoading(false);
           dispatch(loginAction(res));
-          // navigation.navigate("Home");
         })
         .catch((error) => {
           if (error.code === "auth/invalid-email") {

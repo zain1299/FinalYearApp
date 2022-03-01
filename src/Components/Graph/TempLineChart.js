@@ -23,7 +23,7 @@ const TempLineChart = ({ data }) => {
 
         setState([...temp]);
       });
-    // Stop listening for updates when no longer required
+
     return () =>
       database().ref(`/UserDataSensors/`).off("value", onValueChange);
   }, [user.id]);
@@ -32,7 +32,6 @@ const TempLineChart = ({ data }) => {
     <View>
       <LineChart
         data={{
-          // labels: ["Jan", "Feb", "March", "April", "May", "June"],
           datasets: [
             {
               data: state,
@@ -41,14 +40,13 @@ const TempLineChart = ({ data }) => {
         }}
         width={Dimensions?.get("window")?.width - 60}
         height={220}
-        // yAxisLabel=""
         yAxisSuffix="  °C"
-        yAxisInterval={1} // optional, defaults to 1
+        yAxisInterval={1}
         chartConfig={{
           backgroundColor: "#e26a00",
           backgroundGradientFrom: "#5359D1",
           backgroundGradientTo: "#5359D1",
-          decimalPlaces: 2, // optional, defaults to 2dp
+          decimalPlaces: 2,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           useShadowColorFromDataset: true,
@@ -71,7 +69,7 @@ const TempLineChart = ({ data }) => {
 
       <View style={style.childContainer}>
         <View>
-          <Text style={style.text}>Real Temperature</Text>
+          <Text style={style.text}>Temperature</Text>
           <Text style={style.text}>{`${state[5] ? state[5] : 26} °C`}</Text>
         </View>
       </View>
